@@ -1,0 +1,5 @@
+/bin*
+/obj*
+*.pdf
+*.depend
+*.layout
