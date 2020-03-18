@@ -16,7 +16,7 @@ int main(){
 //        std::cout << "Find systems says: " << result << std::endl;
 //    }
 //
-    DaveSmarpod mySmarpod;
+    LD_Smarpod mySmarpod;
 
     mySmarpod.Move_Absolute({0.001, 0, 0, 0, 0, 0});
     mySmarpod.Move_Absolute({0.001, 0.001, 0, 0, 0, 0});

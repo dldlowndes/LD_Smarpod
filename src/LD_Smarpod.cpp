@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 
-DaveSmarpod::DaveSmarpod()
+LD_Smarpod::LD_Smarpod()
 {
 //    std::cout << "Supported values for model number:" << std::endl;
 //    std::vector<unsigned  int> models(128);
@@ -23,18 +23,18 @@ DaveSmarpod::DaveSmarpod()
 
 }
 
-DaveSmarpod::~DaveSmarpod()
+LD_Smarpod::~LD_Smarpod()
 {
     sp_Ret = Close();
     //dtor
 }
 
-DaveSmarpod::DaveSmarpod(const DaveSmarpod& other)
+LD_Smarpod::LD_Smarpod(const LD_Smarpod& other)
 {
     //copy ctor
 }
 
-int DaveSmarpod::Init(unsigned int model, std::string mcsLocator){
+int LD_Smarpod::Init(unsigned int model, std::string mcsLocator){
     // Dunno what to do with this but hey.
     Smarpod_GetDLLVersion(&major, &minor, &update);
     printf("using SmarPod library version %u.%u.%u\n",major,minor,update);
@@ -85,27 +85,27 @@ int DaveSmarpod::Init(unsigned int model, std::string mcsLocator){
     return 0;
 }
 
-int DaveSmarpod::Close(){
+int LD_Smarpod::Close(){
     sp_Ret = Smarpod_Close(id);
     return sp_Ret;
 }
 
-int DaveSmarpod::SetSpeed(double new_Speed){
+int LD_Smarpod::SetSpeed(double new_Speed){
     sp_Ret = Smarpod_SetSpeed(id, 1, new_Speed);
     return sp_Ret;
 }
 
-int DaveSmarpod::SetAcceleration(double new_Acceleration){
+int LD_Smarpod::SetAcceleration(double new_Acceleration){
     sp_Ret = Smarpod_SetAcceleration(id, 1, new_Acceleration);
     return sp_Ret;
 }
 
-int DaveSmarpod::SetPivot(std::vector<double> new_Pivot){
+int LD_Smarpod::SetPivot(std::vector<double> new_Pivot){
     sp_Ret = Smarpod_SetPivot(id, &new_Pivot.front());
     return sp_Ret;
 }
 
-int DaveSmarpod::Move_Absolute(Smarpod_Pose new_Position){
+int LD_Smarpod::Move_Absolute(Smarpod_Pose new_Position){
     Smarpod_Status status;
     Smarpod_GetMoveStatus(id, &status);
     if ((status == SMARPOD_STOPPED) |
@@ -120,7 +120,7 @@ int DaveSmarpod::Move_Absolute(Smarpod_Pose new_Position){
     return sp_Ret;
 }
 
-int DaveSmarpod::Move_Relative(Smarpod_Pose move_Amount){
+int LD_Smarpod::Move_Relative(Smarpod_Pose move_Amount){
     Smarpod_Pose pose = Get_Current_Pose();
     pose.positionX += move_Amount.positionX;
     pose.positionY += move_Amount.positionY;
@@ -132,12 +132,12 @@ int DaveSmarpod::Move_Relative(Smarpod_Pose move_Amount){
     return sp_Ret;
 }
 
-int DaveSmarpod::Move_Origin(){
+int LD_Smarpod::Move_Origin(){
     sp_Ret = Move_Absolute(pZero);
     return sp_Ret;
 }
 
-int DaveSmarpod::Move_Stop(bool and_Hold){
+int LD_Smarpod::Move_Stop(bool and_Hold){
     if (and_Hold){
         sp_Ret = Smarpod_StopAndHold(id, SMARPOD_HOLDTIME_INFINITE);
     }
@@ -147,13 +147,13 @@ int DaveSmarpod::Move_Stop(bool and_Hold){
     return sp_Ret;
 }
 
-Smarpod_Pose DaveSmarpod::Get_Current_Pose(){
+Smarpod_Pose LD_Smarpod::Get_Current_Pose(){
     Smarpod_Pose pose;
     sp_Ret = Smarpod_GetPose(id, &pose);
     return pose;
 }
 
-int DaveSmarpod::Is_Moving(){
+int LD_Smarpod::Is_Moving(){
     Smarpod_Status move_Status;
     sp_Ret = Smarpod_GetMoveStatus(id, &move_Status);
     if (move_Status == SMARPOD_MOVING){
@@ -164,7 +164,7 @@ int DaveSmarpod::Is_Moving(){
     }
 }
 
-int DaveSmarpod::Is_Holding(){
+int LD_Smarpod::Is_Holding(){
     Smarpod_Status move_Status;
     sp_Ret = Smarpod_GetMoveStatus(id, &move_Status);
     if (move_Status == SMARPOD_HOLDING){

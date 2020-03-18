@@ -1,17 +1,17 @@
-#ifndef DAVESMARPOD_H
-#define DAVESMARPOD_H
+#ifndef LD_SMARPOD_H
+#define LD_SMARPOD_H
 
 #include <SmarPod.h>
 
 #include <string>
 #include <vector>
 
-class DaveSmarpod
+class LD_Smarpod
 {
     public:
-        DaveSmarpod();
-        virtual ~DaveSmarpod();
-        DaveSmarpod(const DaveSmarpod& other);
+        LD_Smarpod();
+        virtual ~LD_Smarpod();
+        LD_Smarpod(const LD_Smarpod& other);
 
         bool do_Calibrate;
         int enableAccelerationControl;
@@ -64,4 +64,4 @@ std::vector<Smarpod_Pose> SpiralScan(double x_start, double y_start, double z_st
 
 int Poses_To_File(std::vector<Smarpod_Pose> poses, std::string filename);
 
-#endif // DAVESMARPOD_H
+#endif // LD_SMARPOD_H
