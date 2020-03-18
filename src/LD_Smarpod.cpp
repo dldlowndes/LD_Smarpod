@@ -1,5 +1,5 @@
-#include "DaveSmarpod.h"
-#include "DaveUtil.h"
+#include "LD_Smarpod.h"
+#include "LD_Util.h"
 
 #include <cmath>
 #include <fstream>
