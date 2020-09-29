@@ -6,16 +6,17 @@
 #include <SmarPod.h>
 
 int main(){
-//    char outBuffer[4096];
-//    unsigned int bufferSize = sizeof(outBuffer);
-//    Smarpod_Status result = Smarpod_FindSystems("", outBuffer, &bufferSize);
-//    if(result == SMARPOD_OK){
-//        std::cout << "Found: " << outBuffer << std::endl;
-//    }
-//    else{
-//        std::cout << "Find systems says: " << result << std::endl;
-//    }
-//
+    char outBuffer[4096];
+    unsigned int bufferSize = sizeof(outBuffer);
+    Smarpod_Status result = Smarpod_FindSystems("", outBuffer, &bufferSize);
+    if(result == SMARPOD_OK){
+        std::cout << "Found: " << outBuffer << std::endl;
+    }
+    else{
+        std::cout << "Find systems says: " << result << std::endl;
+    }
+    std::cout << bufferSize << std::endl;
+
     LD_Smarpod mySmarpod;
 
     mySmarpod.Move_Absolute({0.001, 0, 0, 0, 0, 0});

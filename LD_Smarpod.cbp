@@ -6,7 +6,7 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Release">
+			<Target title="Linux">
 				<Option output="bin/Release/LD_Smarpod" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
@@ -17,18 +17,22 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="/usr/lib/libmcscontrol.so" />
+					<Add library="/usr/lib/libsmaractio.so" />
+					<Add library="/usr/lib/libsmarpod.so" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-O2" />
+			<Add option="-pedantic" />
+			<Add option="-Wextra" />
 			<Add option="-Wall" />
+			<Add option="-std=c++14" />
 			<Add option="-m64" />
 		</Compiler>
 		<Linker>
 			<Add option="-m64" />
-			<Add library="/usr/lib/libmcscontrol.so" />
-			<Add library="/usr/lib/libsmaractio.so" />
-			<Add library="/usr/lib/libsmarpod.so" />
 		</Linker>
 		<Unit filename="include/LD_Smarpod.h" />
 		<Unit filename="include/LD_Util.h" />

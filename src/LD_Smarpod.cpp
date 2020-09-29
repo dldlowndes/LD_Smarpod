@@ -34,6 +34,25 @@ LD_Smarpod::LD_Smarpod(const LD_Smarpod& other)
     //copy ctor
 }
 
+int LD_Smarpod::Find_Systems(){
+    std::cout << "Finding systems" << std::endl;
+    std::vector<char> buffer;
+    unsigned int buffer_Size = 4096;
+    buffer.resize(buffer_Size);
+    Smarpod_Status result = Smarpod_FindSystems("", buffer.data(), &buffer_Size);
+    if (result == SMARPOD_OK){
+        std::cout << "Reply is " << buffer_Size << " chars\n";
+
+        for(auto c: buffer){
+            std::cout << c;
+        }
+        std::cout << "\n";
+    }
+    else{
+        std::cout << "Fail, Smarpod says " << result << "\n";
+    }
+}
+
 int LD_Smarpod::Init(unsigned int model, std::string mcsLocator){
     // Dunno what to do with this but hey.
     Smarpod_GetDLLVersion(&major, &minor, &update);

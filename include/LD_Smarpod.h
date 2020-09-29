@@ -13,6 +13,8 @@ class LD_Smarpod
         virtual ~LD_Smarpod();
         LD_Smarpod(const LD_Smarpod& other);
 
+        int Find_Systems();
+
         bool do_Calibrate;
         int enableAccelerationControl;
 
