@@ -17,9 +17,26 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="/usr/lib/libmcscontrol.so" />
-					<Add library="/usr/lib/libsmaractio.so" />
-					<Add library="/usr/lib/libsmarpod.so" />
+					<Add library="libmcscontrol.so" />
+					<Add library="libsmaractio.so" />
+					<Add library="libsmarpod.so" />
+					<Add directory="/usr/lib" />
+				</Linker>
+			</Target>
+			<Target title="Windows">
+				<Option output="bin/Release/LD_Smarpod" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+					<Add directory="C:/Program Files/SmarAct/SmarPod/SDK/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="Smarpod" />
+					<Add directory="C:/Program Files/SmarAct/SmarPod/SDK/lib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -29,10 +46,10 @@
 			<Add option="-Wextra" />
 			<Add option="-Wall" />
 			<Add option="-std=c++14" />
-			<Add option="-m64" />
+			<Add option="-m32" />
 		</Compiler>
 		<Linker>
-			<Add option="-m64" />
+			<Add option="-m32" />
 		</Linker>
 		<Unit filename="include/LD_Smarpod.h" />
 		<Unit filename="include/LD_Util.h" />
@@ -42,6 +59,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
